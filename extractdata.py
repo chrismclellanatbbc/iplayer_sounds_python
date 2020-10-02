@@ -2,7 +2,7 @@ import json
 
 class ExtractData():
 
-    def extractInformation(self, data):
+    def extractInformationFromCompanyNumberSearch(self, data):
         theJSON = json.loads(data)
 
     # Returns Company information of the Company Number entered
@@ -14,6 +14,3 @@ class ExtractData():
             companyStatus = theJSON["results"]["company"]["current_status"] 
         
         return companyName, companyNumber, incorporationDate, companyType, companyStatus
-
-    #def printResults(self, data):
-    #    print()
