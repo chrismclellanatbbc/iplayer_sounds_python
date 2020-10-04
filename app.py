@@ -9,18 +9,26 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    companyNumber = '08528493'
-    companyNumberSearchUrl = "https://api.opencorporates.com/companies/gb/" + str(companyNumber)
-    webUrl = urllib.request.urlopen(companyNumberSearchUrl)
-    if(webUrl.getcode() == 200):
-        data = webUrl.read()
-        json_data = json.loads(data)
+    #catfactsURl = "https://cat-fact.herokuapp.com/facts/"
+    #webUrl = urllib.request.urlopen(catfactsURl)
+    #if(webUrl.getcode() == 200):
+        #data = json.loads(webUrl.read())
+        #return render_template("index.html", data=data['all'])
+    #else:
+        #print("Received error, cannot parse results")
+    
+    return render_template("index.html")
 
-        #return data
-        return render_template("index.html", data=json_data)
+@app.route("/results/")
+def results():
+    catfactsURl = "https://cat-fact.herokuapp.com/facts/"
+    webUrl = urllib.request.urlopen(catfactsURl)
+    if(webUrl.getcode() == 200):
+        data = json.loads(webUrl.read())
+        return render_template("results.html", data=data['all'])
     else:
         print("Received error, cannot parse results")
-    #return render_template("index.html")
+
 
 @app.route("/about/")
 def about():
