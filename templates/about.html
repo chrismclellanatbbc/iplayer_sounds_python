@@ -1,6 +1,5 @@
-    {% extends "layout.html" %}
-    { About }
+    {% extends 'layout.html' %}
     
-    { endblock }
-    { <p>About page for the Visual Studio Code Flask tutorial.</p> }
-    { endblock }
+    {% block content %}
+        <p>About page for the Visual Studio Code Flask tutorial.</p>
+    {% endblock content %}
