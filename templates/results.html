@@ -9,8 +9,7 @@
     <p>{{ datas['text'] }} </p>
     <p>{{ datas['upvotes']}}</p>
         {% if 'user' in datas.keys() %}
-            <p>{{ datas['user']['name']['first'] }} </p>
-            <p>{{datas['user']['name']['last']}}</p>
+            <p>{{ datas['user']['name']['first'] }} {{datas['user']['name']['last']}} </p>
         {% endif %}
     {% endfor %}
 </div>
