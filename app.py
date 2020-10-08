@@ -9,15 +9,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    #catfactsURl = "https://cat-fact.herokuapp.com/facts/"
-    #webUrl = urllib.request.urlopen(catfactsURl)
-    #if(webUrl.getcode() == 200):
-        #data = json.loads(webUrl.read())
-        #return render_template("index.html", data=data['all'])
-    #else:
-        #print("Received error, cannot parse results")
-    
-    return render_template("index.html")
+    return render_template("index.html", title="Home")
+
+@app.route("/random/")
+def randomPage():
+    catfactsURl = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=5"
+    webUrl = urllib.request.urlopen(catfactsURl)
+    if(webUrl.getcode() == 200):
+        data = json.loads(webUrl.read())
+        return render_template("random.html", data=data, title="Random")
+    else:
+        print("Received error, cannot parse results")
 
 @app.route("/results/")
 def results():
@@ -25,7 +27,7 @@ def results():
     webUrl = urllib.request.urlopen(catfactsURl)
     if(webUrl.getcode() == 200):
         data = json.loads(webUrl.read())
-        return render_template("results.html", data=data['all'])
+        return render_template("results.html", data=data['all'], title="Results")
     else:
         print("Received error, cannot parse results")
 

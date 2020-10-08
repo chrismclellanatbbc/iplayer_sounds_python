@@ -1,10 +1,17 @@
 {% extends 'layout.html' %}
 
+{% block title %}{{title}}{% endblock %}
+
 {% block content %}
 <div>
     {% for datas in data %}
     <span>{{ datas['_id'] }}</span>
     <p>{{ datas['text'] }} </p>
+    <p>{{ datas['upvotes']}}</p>
+        {% if 'user' in datas.keys() %}
+            <p>{{ datas['user']['name']['first'] }} </p>
+            <p>{{datas['user']['name']['last']}}</p>
+        {% endif %}
     {% endfor %}
 </div>
 {% endblock content %}

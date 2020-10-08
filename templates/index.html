@@ -1,6 +1,25 @@
 {% extends 'layout.html' %}
 
+{% block title %}{{title}}{% endblock %}
+
 {% block content %}
-<title>Home Page</title>
-    <p>Home page for the Visual Studio Code Flask tutorial.</p> 
+    
+    <p>Home page for the Visual Studio Code Flask tutorial.</p>
+    <div>
+        <p>Press this button will get you all the results for cat facts</p>
+        <form action="/results/">
+            <input type="submit" value="Go to Results" />
+        </form>
+    </div>
+
+    <div>
+        <form action="/random/">
+            <label for="fname">Animal Type:</label><br>
+            <input type="text" id="animalT" name="animal_type" value="cat"><br>
+            <label for="lname">Amount of Results:</label><br>
+            <input type="text" id="randomResult" name="amount" value="1"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+    </div>
+    
 {% endblock content %}
